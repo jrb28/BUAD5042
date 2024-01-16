@@ -1,0 +1,11 @@
+LA,B,SD,A,DE,OK,D,LR,SL,W  
+None, 115, 120, None, None, None, None, None, None, None
+115, None, 677, 904, None, None, None, None, None, None
+120, None, None, None, None, None, 1358, None, None, None
+None, 677, None, None, 449, 504, None, None, None, None
+None, 904, None, 449, None, None, None, None, 851, None
+None, None, None, 504, None, None, None, 389, 489, None
+None, None, 1358, None, None, None, None, 319, None, 1340
+None, None, None, None, None, 389, 319, None, None, 1012
+None, None, None, None, 851, 498, None, None, None, 878
+None, None, None, None, None, None, 1340, 1012, 878, None
