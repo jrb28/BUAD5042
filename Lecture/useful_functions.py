@@ -13,7 +13,7 @@ def cos_sim(vec1, vec2):
     return vec1@vec2/(linalg.norm(vec1) * linalg.norm(vec2))
 
 if __name__ == '__main__':
-    print(dist((0,0), (3,4)))
     print(cos_sim((1,1),(1,1)))
+    print(cos_sim((1,0),(0,1)))
     print(cos_sim((1,1),(-1,-1)))
     print(cos_sim((1,1),(0,1)))
