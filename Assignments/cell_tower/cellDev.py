@@ -38,10 +38,10 @@ def compute_added_calls(towers):
 def cell_algo(towers,budget):
     """ You write your heuristic cell tower algorithm in this function using the argument values that are passed
              towers: a dictionary of the possible cell towers
-             budget: budget for adding cell towers, whcih total cost cannot exceed
+             budget: budget for adding cell towers, which total cost cannot exceed
     
         Your algorithm must return two values as indicated in the return statement:
-            my_username: you WM username
+            my_username: your WM username
             towers_to_pick: list containing keys (integers) of the towers you want to construct
                             The integers refer to keys in the towers dictionary. 
    """
@@ -63,7 +63,7 @@ def getDBDataList():
     cnx = db_connect()
     cursor = cnx.cursor()
     #cursor.execute(commandString)
-    cursor.callproc('spGetProblemIds')
+    cursor.callproc('spGetProblems')
     items = []
     for result in cursor.stored_results(): #list(cursor):
         for item in result.fetchall():
