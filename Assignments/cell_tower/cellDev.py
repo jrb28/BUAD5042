@@ -7,9 +7,9 @@ import mysql.connector as mySQL
 import re
 
 """ global MySQL settings """
-mysql_user_name = ''
-mysql_password = ''
-mysql_ip = ''
+mysql_user_name = 'root'
+mysql_password = 'MySQL'
+mysql_ip = '34.145.197.191'
 mysql_db = 'cell_tower'
 
 def checkBudget(towers,budget):
@@ -53,7 +53,11 @@ def cell_algo(towers,budget):
     tot_calls_added = 0.0      # use this variable, if you wish, to accumulate total calls added given towers that are selected
         
     ''' Start your code below this comment '''
+    tow = [(k,v) for k,v in towers.items()]
     
+    for k,v in towers.items():
+        towers_to_pick.append(k)
+        break
     
     ''' Finish coding before this comment '''
     
