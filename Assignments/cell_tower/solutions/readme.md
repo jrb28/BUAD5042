@@ -1,1 +1,1 @@
-Solution alternatives for teh cell_algo() function.
+Solution alternatives for the cell_algo() function.
