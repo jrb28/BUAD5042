@@ -7,9 +7,9 @@ import mysql.connector as mySQL
 import re
 
 """ global MySQL settings """
-mysql_user_name = ''
-mysql_password = ''
-mysql_ip = ''
+mysql_user_name = 'root'
+mysql_password = 'MySQL'
+mysql_ip = '34.145.197.191'
 mysql_db = 'cell_tower'
 
 def checkBudget(towers,budget):
@@ -38,10 +38,10 @@ def compute_added_calls(towers):
 def cell_algo(towers,budget):
     """ You write your heuristic cell tower algorithm in this function using the argument values that are passed
              towers: a dictionary of the possible cell towers
-             budget: budget for adding cell towers, whcih total cost cannot exceed
+             budget: budget for adding cell towers, which total cost cannot exceed
     
         Your algorithm must return two values as indicated in the return statement:
-            my_username: you WM username
+            my_username: your WM username
             towers_to_pick: list containing keys (integers) of the towers you want to construct
                             The integers refer to keys in the towers dictionary. 
    """
@@ -53,7 +53,11 @@ def cell_algo(towers,budget):
     tot_calls_added = 0.0      # use this variable, if you wish, to accumulate total calls added given towers that are selected
         
     ''' Start your code below this comment '''
+    tow = [(k,v) for k,v in towers.items()]
     
+    for k,v in towers.items():
+        towers_to_pick.append(k)
+        break
     
     ''' Finish coding before this comment '''
     
@@ -63,7 +67,7 @@ def getDBDataList():
     cnx = db_connect()
     cursor = cnx.cursor()
     #cursor.execute(commandString)
-    cursor.callproc('spGetProblemIds')
+    cursor.callproc('spGetProblems')
     items = []
     for result in cursor.stored_results(): #list(cursor):
         for item in result.fetchall():
