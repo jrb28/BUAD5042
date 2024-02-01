@@ -38,7 +38,7 @@ for i in range(len(data)):
 ''' Initialize route '''
 loc_cur = 'W'
 loc_dest = 'LA'
-route = []
+route = [loc_cur]
 dist = 0
 
 ''' Iteratively select next destinations '''
