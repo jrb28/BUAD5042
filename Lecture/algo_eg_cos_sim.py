@@ -49,7 +49,7 @@ while loc_cur != loc_dest:
   ''' Initialze next stop variables '''
   loc_next = ''
   cs_next = -1.1
-  ''' find next stop with largest cosine '''
+  ''' Find next feasible stop with largest cosine '''
   for loc in locs_next:
       vec_cur_dest = (locs[loc_dest]['miles_e'] - locs[loc_cur]['miles_e'],locs[loc_dest]['miles_n'] - locs[loc_cur]['miles_n'])
       vec_cur_next = (locs[loc]['miles_e'] - locs[loc_cur]['miles_e'],locs[loc]['miles_n'] - locs[loc_cur]['miles_n'])

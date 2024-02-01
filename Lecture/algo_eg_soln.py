@@ -47,7 +47,7 @@ while loc_cur != loc_dest:
   ''' Initialze next stop variables '''
   loc_next = ''
   dist_next = 999999999999
-  ''' find next stop with largest cosine '''
+  ''' Find next feasible stop with largest cosine '''
   for loc in [k for k,v in links[loc_cur].items() if v and k not in route]: #locs_next
       if links[loc_cur][loc] < dist_next and locs[loc]['miles_e'] < locs[loc_cur]['miles_e']:
           loc_next = loc
