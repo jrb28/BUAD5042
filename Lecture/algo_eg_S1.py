@@ -42,11 +42,11 @@ loc_dest = 'LA'
 path = [loc_cur]
 dist = 0.0  
         
-while loc_cur != loc_dest :
+while loc_cur != loc_dest:
     ''' Find possible next destinations: 
           - where connections exist 
           - and have not been visited '''
-    locs_next = [(k,v) for k,v in links['W'].items() if v and k not in path]
+    locs_next = [(k,v) for k,v in links[loc_cur].items() if v and k not in path]
     
     ''' Identify closest next destination 
           - set current location to next location selected 
@@ -54,5 +54,8 @@ while loc_cur != loc_dest :
           - Update distance  '''
     ''' sort next destination list, pick 0th element '''
     locs_next.sort(key=lambda x:x[1])
+    path.append(locs_next[0][0])
+    dist += locs_next[0][1]
+    loc_cur = locs_next[0][0]
     
 print(f'Travel path: {path}; Total miles: {dist} miles')
