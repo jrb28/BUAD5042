@@ -36,20 +36,31 @@ for i in range(len(data)):
 
 
 ''' Initialization '''
-    # Initialize path
-    # Initialize total distance
-    # Initialize current location
+# Initialize total distance
+dist = 0.0
+# Initialize current location
+loc_cur = 'W'
+# initialize destination
+loc_fin = 'LA'
+# Initialize path
+route = [loc_cur]
 
 '''Loop until we get to LA '''
+while loc_cur != loc_fin:
     ''' Determine next feasible locations 
         - mileage in data
         - location has not yet been visited '''
+    locs_next = [(mileage, city) for city,mileage in links[loc_cur].items() if mileage and city not in route]
     
             
     ''' Of next possible locations, find closest
-          - initialize shortest distance to next location, next location
           - append closest next location to path 
-          - update total distance     '''
+          - update total distance     
+          - update current location '''
+    locs_next.sort()
+    route.append(locs_next[0][1])
+    dist += locs_next[0][0]
+    loc_cur = locs_next[0][1]
 
     
-#print(f'Travel path: {path}; Total miles: {dist} miles')
+print(f'Travel path: {route}; Total miles: {dist} miles')
