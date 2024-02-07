@@ -26,7 +26,7 @@ def feasible(pop,c,budget):
         ''' randomly delete locations until within budget '''
         while pop[i]@c > budget:
             ''' Randomly choose a "selected" location '''
-            idx = np.random.choice(np.arange(pop.shape[1])*(pop[i]==1))
+            idx = np.random.choice(np.arange(pop.shape[1])[pop[i]==1])
             pop[i,idx] = 0
 
 def fitness(pop,A):
@@ -40,7 +40,6 @@ def select(pop, fit):
 
 def crossover(parents,pop):
     crosspts = np.random.randint(0,pop.shape[1],size=pop.shape[0])
-    #idx = np.tile(np.arange(pop.shape[1]), pop.shape[0]).reshape(pop.shape[0],pop.shape[1])
     idx = np.tile(np.arange(pop.shape[1]), (pop.shape[0],1))
     par_left_mask = np.ones(pop.shape)*(idx<=crosspts.reshape(pop.shape[0],1))
     par_right_mask = np.ones(pop.shape)*(idx>crosspts.reshape(pop.shape[0],1))
