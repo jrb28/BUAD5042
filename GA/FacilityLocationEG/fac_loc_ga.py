@@ -41,7 +41,9 @@ def select(pop, fit):
 def crossover(parents,pop):
     crosspts = np.random.randint(0,pop.shape[1],size=pop.shape[0])
     idx = np.tile(np.arange(pop.shape[1]), (pop.shape[0],1))
-    pop = pop[parents[:,0]]*(idx<=crosspts.reshape(pop.shape[0],1)) + pop[parents[:,1]]*(idx>crosspts.reshape(pop.shape[0],1))
+    par_mask_left = (idx<=crosspts.reshape(pop.shape[0],1))
+    par_mask_right = (idx>crosspts.reshape(pop.shape[0],1))
+    pop = pop[parents[:,0]]*par_mask_left + pop[parents[:,1]]*par_mask_right
 
 def mutate(pop, perc):
     mut_idx = np.random.random(pop.shape)<=perc
