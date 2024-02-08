@@ -41,9 +41,7 @@ def select(pop, fit):
 def crossover(parents,pop):
     crosspts = np.random.randint(0,pop.shape[1],size=pop.shape[0])
     idx = np.tile(np.arange(pop.shape[1]), (pop.shape[0],1))
-    par_left_mask = np.ones(pop.shape)*(idx<=crosspts.reshape(pop.shape[0],1))
-    par_right_mask = np.ones(pop.shape)*(idx>crosspts.reshape(pop.shape[0],1))
-    pop = pop[parents[:,0]]*par_left_mask + pop[parents[:,1]]*par_right_mask
+    pop = pop[parents[:,0]]*(idx<=crosspts.reshape(pop.shape[0],1)) + pop[parents[:,1]]*(idx>crosspts.reshape(pop.shape[0],1))
 
 def mutate(pop, perc):
     mut_idx = np.random.random(pop.shape)<=perc
@@ -54,8 +52,6 @@ def stat(pop, fit, best_fit, best_soln):
         return fit.max(), pop[fit.argmax()].copy()
     else:
         return best_fit, best_soln
-    
-    
 
 def report(i, best_fit, fit):
     print(f'Generation {i}: Best fit: {best_fit}; Max fit gen:{fit.max()}; Avg fit gen: {fit.mean()}')
