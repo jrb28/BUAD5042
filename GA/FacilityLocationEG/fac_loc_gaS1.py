@@ -55,6 +55,7 @@ def crossover(parents,pop):
     par_mask_left = (idx<=crosspts.reshape(pop.shape[0],1))
     par_mask_right = (idx>crosspts.reshape(pop.shape[0],1))
     pop = pop[parents[:,0]]*par_mask_left + pop[parents[:,1]]*par_mask_right
+    return pop
 
 def mutate(pop, perc):
     mut_idx = np.random.random(pop.shape)<=perc

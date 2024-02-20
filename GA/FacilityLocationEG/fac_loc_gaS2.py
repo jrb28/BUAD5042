@@ -57,6 +57,7 @@ def crossover(parents,pop):
     par_mask_left = (idx<=crosspts.reshape(pop.shape[0],1))
     par_mask_right = (idx>crosspts.reshape(pop.shape[0],1))
     pop = pop[parents[:,0]]*par_mask_left + pop[parents[:,1]]*par_mask_right
+    return pop
 
 def mutate(pop, perc):
     mut_idx = np.random.random(pop.shape)<=perc
@@ -95,7 +96,7 @@ best_fit, best_soln = stat(pop, fit, 0, np.zeros(num_loc))
 for i in range(num_gen):
     report(i, best_fit, fit)
     parents = select(pop, fit, select_mode, q)
-    crossover(parents,pop) # replace population with offspring
+    pop = crossover(parents,pop) # replace population with offspring
     mutate(pop, mutate_perc)
     feasible(pop,c,budget)
     fit = fitness(pop,A)
